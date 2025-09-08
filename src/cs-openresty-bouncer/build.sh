@@ -35,6 +35,6 @@ mkdir /tmp/crowdsec-openresty-bouncer
 curl -# -L "${CROWDSEC_OPENRESTY_BOUNCER_URL}" | tar xz --strip 1 -C /tmp/crowdsec-openresty-bouncer
 log "Deploy Crowdsec Openresty Bouncer..."
 cd /tmp/crowdsec-openresty-bouncer
-bash ./install.sh --NGINX_CONF_DIR=${ROOTFS}/etc/nginx/conf.d --LIB_PATH=${ROOTFS}/var/lib/nginx/lualib --CONFIG_PATH=${ROOTFS}/defaults/crowdsec/ --DATA_PATH=${ROOTFS}/defaults/crowdsec/ --SSL_CERTS_PATH=/etc/ssl/certs/ca-cert-GTS_Root_R1.pem --docker
+bash ./install.sh --NGINX_CONF_DIR=${ROOTFS}/etc/nginx/conf.d --LIB_PATH=${ROOTFS}/var/lib/nginx/lualib --CONFIG_PATH=${ROOTFS}/defaults/crowdsec/ --DATA_PATH=${ROOTFS}/defaults/crowdsec/ --SSL_CERTS_PATH=/etc/ssl/certs/ca-certificates.crt --docker
 sed -i 's|/tmp/crowdsec-openresty-bouncer-install||g' ${ROOTFS}/etc/nginx/conf.d/crowdsec_openresty.conf
 sed -i 's|ENABLED=.*|ENABLED=false|' ${ROOTFS}/defaults/crowdsec/crowdsec-openresty-bouncer.conf 
